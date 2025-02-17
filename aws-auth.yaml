@@ -1,0 +1,30 @@
+apiVersion: v1
+data:
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::529088298327:role/eksctl-cloudmart-nodegroup-standar-NodeInstanceRole-7oYuv5FWRa8X
+      username: system:node:{{EC2PrivateDNSName}}
+
+    - rolearn: arn:aws:iam::529088298327:role/codebuild-cloudmartBuild-service-role
+      username: build-user
+      groups:
+        - system:masters
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2025-02-16T02:58:06Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        .: {}
+        f:mapRoles: {}
+    manager: vpcLambda
+    operation: Update
+    time: "2025-02-16T02:58:06Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "1469"
+  uid: ebe085f2-a140-4342-bbaa-701e8ee34129
